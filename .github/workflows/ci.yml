@@ -39,11 +39,11 @@ jobs:
         with:
           name: build
           path: build
-      - name: create a release
+      - name: Create a Release
         if: github.event_name == 'push' && github.ref == 'refs/heads/master'
         run: npx semantic-release
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN}}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Deploy to staging
         if: github.event_name == 'push'
         run: npx surge --project ./build --domain https://sidrga-hobbies.surge.sh/

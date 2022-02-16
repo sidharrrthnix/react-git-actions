@@ -25,9 +25,20 @@ jobs:
       - run: npm test --coverage
         env:
           CI: true
+      - name: upload test coverage
+        uses: actions/upload-artifact@v2
+        with:
+          name: code_coverage
+          path: coverage
       - name: Build Project
         if: github.event_name == 'push'
         run: npm run build
+      - name: upload Build Folder
+        if: github.event_name == 'push'
+        uses: actions/upload-artifact@v2
+        with:
+          name: build
+          path: build
       - name: Deploy to staging
         if: github.event_name == 'push'
         run: npx surge --project ./build --domain https://sidrga-hobbies.surge.sh/

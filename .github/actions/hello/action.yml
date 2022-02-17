@@ -1,0 +1,14 @@
+name: Hello World
+author: Sidharrth Mahadevan
+description: This custom actions prints the name along with time
+inputs:
+  who-to-greet:
+    description: "Who to greet"
+    required: true
+    default: Sid
+outputs:
+  time:
+    description: "The greeting time"
+runs:
+  using: "node16"
+  main: "index.js"

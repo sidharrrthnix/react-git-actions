@@ -1,9 +1,9 @@
 name: CI-workflow
 on:
   pull_request:
-    branches: [develop, master]
+    branches: [develop, master-samp]
   push:
-    branches: [develop, master]
+    branches: [develop, master-samp]
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -42,7 +42,7 @@ jobs:
         with:
           name: build
           path: build
-      - name: ZIP assets
+      - name: ZIP asset
         if: github.event_name == 'push' && github.ref == 'refs/heads/master'
         run: |
           zip -r build.zip ./build
